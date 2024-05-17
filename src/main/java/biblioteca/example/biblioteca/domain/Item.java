@@ -1,5 +1,6 @@
 package biblioteca.example.biblioteca.domain;
 
+import biblioteca.example.biblioteca.Repository.ItemRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,5 +22,13 @@ public class Item {
     private Long id;
 
     private String nome, tipo, editora;
-    private Long numPagina;
+    private Long numPagina, ano;
+    
+    public Item(ItemRequest dados) {
+        this.nome = dados.nome();
+        this.tipo = dados.tipo();
+        this.editora = dados.editora();
+        this.numPagina = dados.numPagina();
+        this.ano = dados.ano();
+    }
 }
