@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import biblioteca.example.biblioteca.Repository.ItemRepository;
-import biblioteca.example.biblioteca.Repository.ItemRequest;
 import biblioteca.example.biblioteca.domain.Item;
+import biblioteca.example.biblioteca.domain.ItemRequest;
 
+@Service
 public class ItemService {
 
     @Autowired

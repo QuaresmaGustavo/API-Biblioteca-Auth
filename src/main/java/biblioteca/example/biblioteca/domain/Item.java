@@ -1,6 +1,5 @@
 package biblioteca.example.biblioteca.domain;
 
-import biblioteca.example.biblioteca.Repository.ItemRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
