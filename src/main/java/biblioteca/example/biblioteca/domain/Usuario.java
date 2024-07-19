@@ -32,7 +32,7 @@ public class Usuario implements UserDetails {
     private Long idade;
     private EUsuario status;
 
-    public Usuario(UsuarioRequest dados, String encryptarSenha) {
+    public Usuario(UsuarioRequestDTO dados, String encryptarSenha) {
         this.nome = dados.nome();
         this.login = dados.login();
         this.senha = encryptarSenha;

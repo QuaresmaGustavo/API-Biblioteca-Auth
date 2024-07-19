@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import biblioteca.example.biblioteca.Repository.ItemRepository;
 import biblioteca.example.biblioteca.domain.Item;
-import biblioteca.example.biblioteca.domain.ItemRequest;
+import biblioteca.example.biblioteca.domain.ItemRequestDTO;
 
 @Service
 public class ItemService {
@@ -25,19 +25,22 @@ public class ItemService {
         return repository.findById(id);
     }
 
-    public Item cadastrarItem(ItemRequest dados) {
+    public Item cadastrarItem(ItemRequestDTO dados) {
         Item novoItem = new Item(dados);
         repository.save(novoItem);
         return novoItem;        
     }
 
-    public Item atualizarItem(Long id, ItemRequest dados) {
+    public Item atualizarItem(Long id, ItemRequestDTO dados) {
         if (buscarPorID(id).isPresent()) {
             Item itemAtualizado = buscarPorID(id).get();
 
             itemAtualizado.setNome(dados.nome());
             itemAtualizado.setTipo(dados.tipo());
             itemAtualizado.setEditora(dados.editora());
+            itemAtualizado.setEditora(dados.editora());
+            itemAtualizado.setDescricao(dados.descricao());
+            itemAtualizado.setImagem(dados.imagem());
             itemAtualizado.setNumPagina(dados.numPagina());
             itemAtualizado.setAno(dados.ano());
             return repository.save(itemAtualizado);

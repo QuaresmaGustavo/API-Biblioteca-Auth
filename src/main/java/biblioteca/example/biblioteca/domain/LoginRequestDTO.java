@@ -1,3 +1,3 @@
 package biblioteca.example.biblioteca.domain;
 
-public record LoginRequest(String token) {}
+public record LoginRequestDTO(String token) {}

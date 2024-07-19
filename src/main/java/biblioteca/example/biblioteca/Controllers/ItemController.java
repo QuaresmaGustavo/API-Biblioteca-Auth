@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import biblioteca.example.biblioteca.Repository.ItemRepository;
 import biblioteca.example.biblioteca.Service.ItemService;
 import biblioteca.example.biblioteca.domain.Item;
-import biblioteca.example.biblioteca.domain.ItemRequest;
+import biblioteca.example.biblioteca.domain.ItemRequestDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/item")
-
+@CrossOrigin(origins = "http://localhost:8080")
 public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
@@ -42,12 +43,12 @@ public class ItemController {
     }
     
     @PostMapping("/cadastrar")
-    public ResponseEntity<Item> cadastrarItem(@RequestBody @Validated ItemRequest dados) {
+    public ResponseEntity<Item> cadastrarItem(@RequestBody @Validated ItemRequestDTO dados) {
         return ResponseEntity.ok().body(service.cadastrarItem(dados));
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Item> atualizarItem(@PathVariable @Validated Long id, @RequestBody @Validated ItemRequest dados) {
+    public ResponseEntity<Item> atualizarItem(@PathVariable @Validated Long id, @RequestBody @Validated ItemRequestDTO dados) {
         return ResponseEntity.ok().body(service.atualizarItem(id,dados));
     }
 

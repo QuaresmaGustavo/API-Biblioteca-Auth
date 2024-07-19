@@ -14,11 +14,12 @@ import biblioteca.example.biblioteca.Repository.UsuarioRepository;
 import biblioteca.example.biblioteca.Service.TokenService;
 import biblioteca.example.biblioteca.Service.UsuarioService;
 import biblioteca.example.biblioteca.domain.AutenticacaoRequest;
-import biblioteca.example.biblioteca.domain.LoginRequest;
+import biblioteca.example.biblioteca.domain.LoginRequestDTO;
 import biblioteca.example.biblioteca.domain.Usuario;
-import biblioteca.example.biblioteca.domain.UsuarioRequest;
+import biblioteca.example.biblioteca.domain.UsuarioRequestDTO;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/usuario")
+@CrossOrigin(origins = "http://localhost:8080")
 public class UsuarioController {
     @Autowired 
     private UsuarioRepository usuarioRepository;
@@ -56,16 +58,16 @@ public class UsuarioController {
         var login = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         var loginAutenticado = this.autenticacao.authenticate(login);
         var token = tokenService.generateToken((Usuario)loginAutenticado.getPrincipal());
-        return ResponseEntity.ok(new LoginRequest(token));
+        return ResponseEntity.ok(new LoginRequestDTO(token));
     }
     
     @PostMapping("/cadastro")
-    public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody @Validated UsuarioRequest dados) {
+    public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody @Validated UsuarioRequestDTO dados) {
         return ResponseEntity.ok().body(service.cadastrarUsuario(dados));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable @Validated Long id, @RequestBody @Validated UsuarioRequest dados) {    
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable @Validated Long id, @RequestBody @Validated UsuarioRequestDTO dados) {    
         return ResponseEntity.ok(service.atualizarUsuario(id, dados));
     }
 

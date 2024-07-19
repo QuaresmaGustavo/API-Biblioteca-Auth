@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import biblioteca.example.biblioteca.Repository.UsuarioRepository;
 import biblioteca.example.biblioteca.domain.Usuario;
-import biblioteca.example.biblioteca.domain.UsuarioRequest;
+import biblioteca.example.biblioteca.domain.UsuarioRequestDTO;
 
 @Service
 public class UsuarioService implements UserDetailsService{
@@ -30,14 +30,14 @@ public class UsuarioService implements UserDetailsService{
         return usuarioId;
     }
 
-    public Usuario cadastrarUsuario(UsuarioRequest dados) {
+    public Usuario cadastrarUsuario(UsuarioRequestDTO dados) {
         String encryptarSenha = new BCryptPasswordEncoder().encode(dados.senha());
         Usuario novoUsuario = new Usuario(dados, encryptarSenha);
         repository.save(novoUsuario);
         return novoUsuario;
     }
 
-    public Usuario atualizarUsuario(Long id, UsuarioRequest dados) {
+    public Usuario atualizarUsuario(Long id, UsuarioRequestDTO dados) {
         Optional<Usuario> idUsuario = buscarUsuario(id);
         if (idUsuario.isPresent()) {
             Usuario usuarioAtualizado = idUsuario.get();
