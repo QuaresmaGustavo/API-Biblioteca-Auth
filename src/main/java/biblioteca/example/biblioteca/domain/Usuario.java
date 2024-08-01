@@ -1,5 +1,6 @@
 package biblioteca.example.biblioteca.domain;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -29,14 +30,14 @@ public class Usuario implements UserDetails {
     private Long id;
 
     private String nome, login, senha;
-    private Long idade;
+    private LocalDate data_registro;
     private EUsuario status;
 
     public Usuario(UsuarioRequestDTO dados, String encryptarSenha) {
         this.nome = dados.nome();
         this.login = dados.login();
         this.senha = encryptarSenha;
-        this.idade = dados.idade();
+        this.data_registro = LocalDate.now();
         this.status = dados.status();
     }
 
@@ -44,8 +45,6 @@ public class Usuario implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.status == EUsuario.FUNCIONARIO) {
             return List.of(new SimpleGrantedAuthority("ROLE_FUNCIONARIO"));
-        }else if (this.status == EUsuario.PROFESSOR) {
-            return List.of(new SimpleGrantedAuthority("ROLE_PROFESSOR"));
         }else{
             return List.of(new SimpleGrantedAuthority("ROLE_ALUNO"));
         }

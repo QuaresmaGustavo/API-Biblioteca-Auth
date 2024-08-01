@@ -47,7 +47,6 @@ public class UsuarioService implements UserDetailsService{
             usuarioAtualizado.setNome(dados.nome());
             usuarioAtualizado.setLogin(dados.login());
             usuarioAtualizado.setSenha(encryptarSenha);
-            usuarioAtualizado.setIdade(dados.idade());
             return repository.save(usuarioAtualizado);
             }
             else {

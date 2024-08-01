@@ -20,8 +20,7 @@ public class Item {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome, tipo, editora, descricao, imagem;
-    private Long numPagina, ano;
+    private String nome, tipo, editora, descricao, imagem, publicacao, numPagina;
     
     public Item(ItemRequestDTO dados) {
         this.nome = dados.nome();
@@ -30,6 +29,6 @@ public class Item {
         this.descricao = dados.descricao();
         this.imagem = dados.imagem();
         this.numPagina = dados.numPagina();
-        this.ano = dados.ano();
+        this.publicacao = dados.publicacao();
     }
 }

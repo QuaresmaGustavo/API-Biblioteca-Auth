@@ -1,8 +1,7 @@
 package biblioteca.example.biblioteca.Enum;
 
 public enum EUsuario {
-    ALUNO("Aluno"),
-    PROFESSOR("Professor"),
+    USUARIO("Usuario"),
     FUNCIONARIO("Funcionario");
 
     private String role;

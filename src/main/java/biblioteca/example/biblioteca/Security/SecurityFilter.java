@@ -40,7 +40,8 @@ public class SecurityFilter extends OncePerRequestFilter{
 
     private String recoverToken(HttpServletRequest request) {
         var autenticarCabecalho = request.getHeader("Authorization");
-        if(autenticarCabecalho == null) return null;
+        if(autenticarCabecalho == null) 
+            return null;
         return autenticarCabecalho.replace("Bearer ", "");
     }
 }

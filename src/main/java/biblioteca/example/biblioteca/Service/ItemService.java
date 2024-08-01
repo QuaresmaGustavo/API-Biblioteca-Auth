@@ -38,11 +38,10 @@ public class ItemService {
             itemAtualizado.setNome(dados.nome());
             itemAtualizado.setTipo(dados.tipo());
             itemAtualizado.setEditora(dados.editora());
-            itemAtualizado.setEditora(dados.editora());
             itemAtualizado.setDescricao(dados.descricao());
             itemAtualizado.setImagem(dados.imagem());
             itemAtualizado.setNumPagina(dados.numPagina());
-            itemAtualizado.setAno(dados.ano());
+            itemAtualizado.setPublicacao(dados.publicacao());
             return repository.save(itemAtualizado);
         }
         else {
