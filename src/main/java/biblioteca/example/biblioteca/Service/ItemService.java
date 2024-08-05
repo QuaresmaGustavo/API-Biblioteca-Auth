@@ -25,6 +25,18 @@ public class ItemService {
         return repository.findById(id);
     }
 
+    public List<Item> buscarPorNome(String item) {
+        return repository.findByNome(item);
+    }
+
+    public List<Item> buscarPorCategoria(String categoria) {
+        return repository.findByTipo(categoria);
+    }
+
+    public List<Item> buscarPorEditora(String editora) {
+        return repository.findByEditora(editora);
+    }
+
     public Item cadastrarItem(ItemRequestDTO dados) {
         Item novoItem = new Item(dados);
         repository.save(novoItem);

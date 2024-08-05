@@ -49,8 +49,13 @@ public class UsuarioController {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Usuario>> buscarUsuario(@PathVariable @Validated Long id) {
-        return ResponseEntity.ok(service.buscarUsuario(id));
+    public ResponseEntity<Optional<Usuario>> buscarPorId(@PathVariable @Validated Long id) {
+        return ResponseEntity.ok(service.buscarPorId(id));
+    }
+
+    @GetMapping("/{nome}")
+    public ResponseEntity<List<Usuario>> buscarPorNome(@PathVariable @Validated String nome) {
+        return ResponseEntity.ok().body(service.buscarPorNome(nome));
     }
 
     @PostMapping("/login")
@@ -61,7 +66,7 @@ public class UsuarioController {
         return ResponseEntity.ok(new LoginRequestDTO(token));
     }
     
-    @PostMapping("/cadastro")
+    @PostMapping("/cadastrar")
     public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody @Validated UsuarioRequestDTO dados) {
         return ResponseEntity.ok().body(service.cadastrarUsuario(dados));
     }

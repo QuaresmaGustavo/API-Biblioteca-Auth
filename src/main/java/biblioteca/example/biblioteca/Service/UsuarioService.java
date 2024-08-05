@@ -25,9 +25,14 @@ public class UsuarioService implements UserDetailsService{
         return repository.findAll();
     }
 
-    public Optional<Usuario> buscarUsuario(Long id) {
+    public Optional<Usuario> buscarPorId(Long id) {
         Optional<Usuario> usuarioId = repository.findById(id);
         return usuarioId;
+    }
+
+    public List<Usuario> buscarPorNome(String nome) {
+        List<Usuario> listaUsuarios = repository.findByNome(nome);
+        return listaUsuarios;
     }
 
     public Usuario cadastrarUsuario(UsuarioRequestDTO dados) {
@@ -38,7 +43,7 @@ public class UsuarioService implements UserDetailsService{
     }
 
     public Usuario atualizarUsuario(Long id, UsuarioRequestDTO dados) {
-        Optional<Usuario> idUsuario = buscarUsuario(id);
+        Optional<Usuario> idUsuario = buscarPorId(id);
         if (idUsuario.isPresent()) {
             Usuario usuarioAtualizado = idUsuario.get();
 

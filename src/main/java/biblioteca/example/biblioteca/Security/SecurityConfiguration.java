@@ -26,7 +26,7 @@ public class SecurityConfiguration {
                            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                            .authorizeHttpRequests(authorise -> authorise
                            .requestMatchers(HttpMethod.GET,"/usuario/todos").hasRole("FUNCIONARIO")
-                           .requestMatchers(HttpMethod.GET,"/usuario/{id}").permitAll()
+                           .requestMatchers(HttpMethod.GET,"/usuario/**").permitAll()
                            .requestMatchers(HttpMethod.POST,"/usuario/login").permitAll()
                            .requestMatchers(HttpMethod.POST,"/usuario/cadastro").hasRole("FUNCIONARIO")
                            .requestMatchers(HttpMethod.PUT,"/usuario/{id}").hasRole("FUNCIONARIO")

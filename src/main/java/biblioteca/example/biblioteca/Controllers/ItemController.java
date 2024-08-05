@@ -41,6 +41,21 @@ public class ItemController {
     public ResponseEntity<Optional<Item>> buscarPorID(@PathVariable @Validated Long id) {
         return ResponseEntity.ok().body(service.buscarPorID(id));
     }
+
+    @GetMapping("nome/{nome}")
+    public ResponseEntity<List<Item>> buscarPorNome(@PathVariable @Validated String nome) {
+        return ResponseEntity.ok().body(service.buscarPorNome(nome));
+    }
+
+    @GetMapping("categoria/{categoria}")
+    public ResponseEntity<List<Item>> buscarPorCategoria(@PathVariable @Validated String categoria) {
+        return ResponseEntity.ok().body(service.buscarPorCategoria(categoria));
+    }
+
+    @GetMapping("editora/{editora}")
+    public ResponseEntity<List<Item>> buscarPorEditora(@PathVariable @Validated String editora) {
+        return ResponseEntity.ok().body(service.buscarPorEditora(editora));
+    }
     
     @PostMapping("/cadastrar")
     public ResponseEntity<Item> cadastrarItem(@RequestBody @Validated ItemRequestDTO dados) {
