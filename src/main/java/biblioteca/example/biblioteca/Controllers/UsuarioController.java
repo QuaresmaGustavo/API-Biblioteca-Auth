@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
 
+import biblioteca.example.biblioteca.Enum.EUsuario;
 import biblioteca.example.biblioteca.Repository.UsuarioRepository;
 import biblioteca.example.biblioteca.Service.TokenService;
 import biblioteca.example.biblioteca.Service.UsuarioService;
@@ -63,7 +65,9 @@ public class UsuarioController {
         var login = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         var loginAutenticado = this.autenticacao.authenticate(login);
         var token = tokenService.generateToken((Usuario)loginAutenticado.getPrincipal());
-        return ResponseEntity.ok(new LoginRequestDTO(token));
+        Optional<Usuario> usuario = usuarioRepository.buscarPorLogin(dados.login());
+        String roleUsuario = usuario.get().getStatus().toString();
+        return ResponseEntity.ok(new LoginRequestDTO(token, roleUsuario));
     }
     
     @PostMapping("/cadastrar")
