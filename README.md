@@ -1,10 +1,10 @@
-## Tecnologias Utilizadas
- # Backend
+# Tecnologias Utilizadas
+ ## Backend
     * Spring Boot
     * Spring Security
     * JPA / Hibernate
     * Lombok
     * JWT
     * Maven
- # Banco de Dados
+ ## Banco de Dados
     * MySQL
