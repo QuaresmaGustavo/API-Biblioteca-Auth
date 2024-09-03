@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,8 +23,8 @@ public class UsuarioService implements UserDetailsService{
     @Autowired
     private UsuarioRepository repository;
 
-    public List<Usuario> buscarTodosUsuarios() {
-        return repository.findAll();
+    public Page<Usuario> buscarTodosUsuarios(Integer pagina, Integer quantidade) {
+        return repository.findAll(PageRequest.of(pagina, quantidade));
     }
 
     public Optional<Usuario> buscarPorId(Long id) {

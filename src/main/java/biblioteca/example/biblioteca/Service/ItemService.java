@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import biblioteca.example.biblioteca.Repository.ItemRepository;
@@ -17,8 +19,8 @@ public class ItemService {
     @Autowired
     private ItemRepository repository;
 
-    public List<Item> buscarTodositens() {
-        return repository.findAll();
+    public Page<Item> buscarTodositens(Integer pagina, Integer quantidade) {
+        return repository.findAll(PageRequest.of(pagina, quantidade));
     }
 
     public Optional<Item> buscarPorID(Long id) {
