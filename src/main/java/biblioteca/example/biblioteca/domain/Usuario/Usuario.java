@@ -1,4 +1,4 @@
-package biblioteca.example.biblioteca.domain;
+package biblioteca.example.biblioteca.domain.Usuario;
 
 import java.time.LocalDate;
 import java.util.Collection;

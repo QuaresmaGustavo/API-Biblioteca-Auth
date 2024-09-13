@@ -14,8 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import biblioteca.example.biblioteca.Repository.UsuarioRepository;
-import biblioteca.example.biblioteca.domain.Usuario;
-import biblioteca.example.biblioteca.domain.UsuarioRequestDTO;
+import biblioteca.example.biblioteca.domain.Usuario.Usuario;
+import biblioteca.example.biblioteca.domain.Usuario.UsuarioRequestDTO;
 
 @Service
 public class UsuarioService implements UserDetailsService{

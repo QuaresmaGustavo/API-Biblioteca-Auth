@@ -1,4 +1,4 @@
-package biblioteca.example.biblioteca.domain;
+package biblioteca.example.biblioteca.domain.Item;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

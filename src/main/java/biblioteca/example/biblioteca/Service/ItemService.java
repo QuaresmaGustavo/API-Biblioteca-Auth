@@ -10,8 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import biblioteca.example.biblioteca.Repository.ItemRepository;
-import biblioteca.example.biblioteca.domain.Item;
-import biblioteca.example.biblioteca.domain.ItemRequestDTO;
+import biblioteca.example.biblioteca.domain.Item.Item;
+import biblioteca.example.biblioteca.domain.Item.ItemRequestDTO;
 
 @Service
 public class ItemService {

@@ -1,4 +1,4 @@
-package biblioteca.example.biblioteca.domain;
+package biblioteca.example.biblioteca.domain.Item;
 
 public record ItemRequestDTO(Long id,
                              String nome,

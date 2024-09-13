@@ -16,8 +16,8 @@ import biblioteca.example.biblioteca.Service.TokenService;
 import biblioteca.example.biblioteca.Service.UsuarioService;
 import biblioteca.example.biblioteca.domain.AutenticacaoRequest;
 import biblioteca.example.biblioteca.domain.LoginRequestDTO;
-import biblioteca.example.biblioteca.domain.Usuario;
-import biblioteca.example.biblioteca.domain.UsuarioRequestDTO;
+import biblioteca.example.biblioteca.domain.Usuario.Usuario;
+import biblioteca.example.biblioteca.domain.Usuario.UsuarioRequestDTO;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

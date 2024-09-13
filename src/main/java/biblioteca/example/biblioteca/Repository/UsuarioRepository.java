@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
-import biblioteca.example.biblioteca.domain.Usuario;
+import biblioteca.example.biblioteca.domain.Usuario.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {

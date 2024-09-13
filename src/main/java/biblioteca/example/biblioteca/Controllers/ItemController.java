@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import biblioteca.example.biblioteca.Repository.ItemRepository;
 import biblioteca.example.biblioteca.Service.ItemService;
-import biblioteca.example.biblioteca.domain.Item;
-import biblioteca.example.biblioteca.domain.ItemRequestDTO;
+import biblioteca.example.biblioteca.domain.Item.Item;
+import biblioteca.example.biblioteca.domain.Item.ItemRequestDTO;
 
 import java.util.List;
 import java.util.Optional;
