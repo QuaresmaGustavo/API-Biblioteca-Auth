@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import biblioteca.example.biblioteca.Repository.UsuarioRepository;
+import biblioteca.example.biblioteca.domain.ResponseModel;
 import biblioteca.example.biblioteca.domain.Usuario.Usuario;
 import biblioteca.example.biblioteca.domain.Usuario.UsuarioRequestDTO;
 
@@ -23,8 +24,10 @@ public class UsuarioService implements UserDetailsService{
     @Autowired
     private UsuarioRepository repository;
 
-    public Page<Usuario> buscarTodosUsuarios(Integer pagina, Integer quantidade) {
-        return repository.findAll(PageRequest.of(pagina, quantidade));
+    public ResponseModel<Usuario> buscarTodosUsuarios(Integer pagina, Integer quantidade) {
+        Page<Usuario> usuarioPorPagina = repository.findAll(PageRequest.of(pagina, quantidade));
+        Long totalUsuario = repository.count();
+        return new ResponseModel<>(usuarioPorPagina.getContent(), totalUsuario);
     }
 
     public Optional<Usuario> buscarPorId(Long id) {

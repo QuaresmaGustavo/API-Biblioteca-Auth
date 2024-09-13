@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import biblioteca.example.biblioteca.Repository.ItemRepository;
 import biblioteca.example.biblioteca.Service.ItemService;
+import biblioteca.example.biblioteca.domain.ResponseModel;
 import biblioteca.example.biblioteca.domain.Item.Item;
 import biblioteca.example.biblioteca.domain.Item.ItemRequestDTO;
 
@@ -11,7 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +35,7 @@ public class ItemController {
     private ItemService service;
 
     @GetMapping("/todos")
-    public ResponseEntity<Page<Item>> buscarTodosItens(@RequestParam Integer pagina, @RequestParam Integer quantidade) {
+    public ResponseEntity<ResponseModel<Item>> buscarTodosItens(@RequestParam Integer pagina, @RequestParam Integer quantidade) {
         return ResponseEntity.ok().body(service.buscarTodositens(pagina, quantidade));
     }
     

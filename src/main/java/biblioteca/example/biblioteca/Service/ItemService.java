@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import biblioteca.example.biblioteca.Repository.ItemRepository;
+import biblioteca.example.biblioteca.domain.ResponseModel;
 import biblioteca.example.biblioteca.domain.Item.Item;
 import biblioteca.example.biblioteca.domain.Item.ItemRequestDTO;
 
@@ -19,8 +20,10 @@ public class ItemService {
     @Autowired
     private ItemRepository repository;
 
-    public Page<Item> buscarTodositens(Integer pagina, Integer quantidade) {
-        return repository.findAll(PageRequest.of(pagina, quantidade));
+    public ResponseModel<Item> buscarTodositens(Integer pagina, Integer quantidade) {
+        Page<Item> itemPorPagina = repository.findAll(PageRequest.of(pagina, quantidade));
+        Long totalItens = repository.count();
+        return new ResponseModel<>(itemPorPagina.getContent(), totalItens);
     }
 
     public Optional<Item> buscarPorID(Long id) {

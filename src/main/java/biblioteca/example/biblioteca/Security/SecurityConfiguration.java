@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                            .requestMatchers(HttpMethod.GET,"/usuario/todos").hasRole("FUNCIONARIO")
                            .requestMatchers(HttpMethod.GET,"/usuario/**").permitAll()
                            .requestMatchers(HttpMethod.POST,"/usuario/login").permitAll()
-                           .requestMatchers(HttpMethod.POST,"/usuario/cadastro").hasRole("FUNCIONARIO")
+                           .requestMatchers(HttpMethod.POST,"/usuario/cadastro").permitAll()
                            .requestMatchers(HttpMethod.PUT,"/usuario/{id}").hasRole("FUNCIONARIO")
                            .requestMatchers(HttpMethod.DELETE,"/usuario/{id}").hasRole("FUNCIONARIO")
                            .requestMatchers(HttpMethod.GET,"/item/**").permitAll()
