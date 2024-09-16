@@ -65,9 +65,11 @@ public class UsuarioController {
         var login = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         var loginAutenticado = this.autenticacao.authenticate(login);
         var token = tokenService.generateToken((Usuario)loginAutenticado.getPrincipal());
+
         Optional<Usuario> usuario = usuarioRepository.buscarPorLogin(dados.login());
         String roleUsuario = usuario.get().getStatus().toString();
-        return ResponseEntity.ok(new LoginRequestDTO(token, roleUsuario));
+        Long idUsuario = usuario.get().getId();
+        return ResponseEntity.ok(new LoginRequestDTO(token, roleUsuario, idUsuario));
     }
     
     @PostMapping("/cadastrar")

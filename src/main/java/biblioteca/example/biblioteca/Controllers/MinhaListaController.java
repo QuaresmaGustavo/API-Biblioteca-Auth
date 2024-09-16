@@ -28,9 +28,9 @@ public class MinhaListaController {
     @Autowired
     private MinhaListaRepository repository;
 
-    @GetMapping("/buscarLista")
-    public ResponseEntity<List<MinhaLista>> buscarTodosOsItens() {
-        return ResponseEntity.ok().body(service.buscarTodosOsItens());
+    @GetMapping("/buscarLista/{id}")
+    public ResponseEntity<List<MinhaLista>> buscarItensPorUsuario(@PathVariable("id") Long id) {
+        return ResponseEntity.ok().body(service.buscarItensPorUsuario(id));
     }
     
     @PostMapping("/salvar")

@@ -19,8 +19,8 @@ public class MinhaListaService {
     @Autowired
     private ItemService serviceitem;
 
-    public List<MinhaLista> buscarTodosOsItens(){
-        return repository.findAll();
+    public List<MinhaLista> buscarItensPorUsuario(Long usuarioId) {
+        return repository.findByIdUsuarioID(usuarioId);
     }
 
     public MinhaLista salvarItem(MinhaListaRequestDTO dados){
